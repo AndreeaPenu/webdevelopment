@@ -1,13 +1,19 @@
 <?php
 
 namespace App;
+use Eloquent;
 
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+// use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Auth\Authenticatable as AuthenticableTrait;
+
+class User extends Eloquent implements Authenticatable
 {
     use Notifiable;
+
+    use AuthenticableTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -15,7 +21,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'facebook_id',
+        'name', 'email', 'password', 'facebook_id', 'ip_address'
     ];
 
     /**

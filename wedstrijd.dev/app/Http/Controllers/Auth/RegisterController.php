@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Laravel\Socialite\Facades\Socialite;
@@ -61,12 +62,13 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+    protected function create(array $data, Request $request)
     {
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'ip_address' => $request->ip(),
         ]);
     }
 
@@ -86,7 +88,7 @@ class RegisterController extends Controller
      *
      * @return Response
      */
-    public function handleProviderCallback()
+    public function handleProviderCallback(Request $request)
     {
 
         try{
@@ -100,10 +102,11 @@ class RegisterController extends Controller
         $user = User::where('facebook_id',$socialUser->getId())->first();
         if(!$user)
             User::create([
+
                 'facebook_id' => $socialUser->getId(),
                 'name' => $socialUser->getName(),
                 'email' => $socialUser->getEmail(),
-
+                'ip_address' => $request->ip(),
             ]);
         auth()->login($user);
 
@@ -112,5 +115,7 @@ class RegisterController extends Controller
 
         // $user->token;
     }
+
+
 
 }
