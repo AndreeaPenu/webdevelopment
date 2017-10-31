@@ -35,4 +35,10 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'facebook' => [
+        'client_id' => '1562581200473709',
+        'client_secret' => '46f92172d2dda7ea956eecacc2101eb2',
+        'redirect' => 'http://wedstrijd.dev/auth/facebook/callback',
+    ],
+
 ];
