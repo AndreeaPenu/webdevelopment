@@ -21,3 +21,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('auth/facebook', 'Auth\RegisterController@redirectToProvider');
 Route::get('auth/facebook/callback', 'Auth\RegisterController@handleProviderCallback');
+
+Route::resource('/users', 'UserController',['names'=>[
+    'index'=>'users.index',
+    'destroy'=>'users.destroy'
+]]);
