@@ -62,13 +62,12 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data, Request $request)
+    protected function create(array $data)
     {
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'ip_address' => $request->ip(),
         ]);
     }
 
@@ -107,6 +106,7 @@ class RegisterController extends Controller
                 'name' => $socialUser->getName(),
                 'email' => $socialUser->getEmail(),
                 'ip_address' => $request->ip(),
+                'has_voted' => false,
             ]);
         auth()->login($user);
 

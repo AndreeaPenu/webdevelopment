@@ -17,9 +17,12 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('facebook_id')->unique();
             $table->string('ip_address');
+            $table->boolean('has_voted')->default(false);
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('address');
+            $table->string('town');
             $table->rememberToken();
             $table->timestamps();
         });

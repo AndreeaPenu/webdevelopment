@@ -3,6 +3,7 @@
 namespace App;
 use Eloquent;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 // use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -15,13 +16,20 @@ class User extends Eloquent implements Authenticatable
 
     use AuthenticableTrait;
 
+    use SoftDeletes;
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
+
+
+    protected $dates = ['deleted_at'];
+
+
     protected $fillable = [
-        'name', 'email', 'password', 'facebook_id', 'ip_address'
+        'name', 'email', 'password', 'facebook_id', 'ip_address', 'address', 'town',
     ];
 
     /**
@@ -32,4 +40,5 @@ class User extends Eloquent implements Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
 }
