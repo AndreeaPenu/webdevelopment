@@ -41,4 +41,8 @@ class User extends Eloquent implements Authenticatable
         'password', 'remember_token',
     ];
 
+
+    public function participations(){
+        return $this->hasOne('\App\Participation');
+    }
 }

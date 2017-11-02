@@ -29,3 +29,10 @@ Route::resource('/users', 'UserController',['names'=>[
 
 Route::post('/users', 'UserController@store');
 Route::get('/users/{id}/edit','UserController@edit')->name('users.edit');
+
+Route::resource('participations', 'ParticipationsController',['names'=>[
+    'index'=>'participations.index',
+    'create'=>'participations.create',
+    'store'=>'participations.store',
+    'edit'=>'participations.edit'
+]]);
