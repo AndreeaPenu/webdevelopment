@@ -52,6 +52,8 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
+            'address' => 'required|string|max:255',
+            'town' => 'required|string|max:255',
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
@@ -67,8 +69,14 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'address' => $data['address'],
+            'town' => $data['town'],
             'password' => bcrypt($data['password']),
+            'ip_address' => \Request::ip(),
+            'has_voted' => false,
         ]);
+
+
     }
 
 
@@ -111,7 +119,7 @@ class RegisterController extends Controller
         auth()->login($user);
 
 
-        return redirect()->to('/home');
+        return redirect()->to('/register');
 
         // $user->token;
     }

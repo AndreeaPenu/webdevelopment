@@ -18,7 +18,7 @@
         <td>{{$user->name}}</td>
         <td>{{$user->email}}</td>
         <td>
-            
+
         <form action="{{ route('users.destroy', $user->id) }}" method="POST">
             <input type="hidden" name="_method" value="DELETE" />
             <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>" />

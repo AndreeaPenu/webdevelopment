@@ -39,6 +39,16 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+        User::create([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'facebook_id' => $request->input('facebook_id'),
+            'ip_address' => $request->input('ip_address'),
+            'has_voted' => $request->input('has_voted'),
+            'address' => $request->input('address'),
+            'town' => $request->input('town'),
+        ]);
+        return redirect("/home");
     }
 
     /**
@@ -61,6 +71,8 @@ class UserController extends Controller
     public function edit($id)
     {
         //
+        $user = User::find($id);
+        return view('users.edit',compact('user'));
     }
 
     /**
@@ -73,6 +85,11 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $user = User::findOrFail($id);
+        $user->address = $request->input('address');
+        $user->town = $request->input('town');
+        $user->update();
+        return redirect('/home');
     }
 
     /**

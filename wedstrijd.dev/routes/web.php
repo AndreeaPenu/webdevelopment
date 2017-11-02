@@ -26,3 +26,6 @@ Route::resource('/users', 'UserController',['names'=>[
     'index'=>'users.index',
     'destroy'=>'users.destroy'
 ]]);
+
+Route::post('/users', 'UserController@store');
+Route::get('/users/{id}/edit','UserController@edit')->name('users.edit');
