@@ -75,6 +75,7 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script language="JavaScript" type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+    <script language="JavaScript" type="text/javascript" src="{{ asset('js/custom.js') }}"></script>
 </body>
 </html>

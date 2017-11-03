@@ -21,4 +21,8 @@ class Participation extends Model
     public function photo(){
         return $this->belongsTo('\App\Photo');
     }
+
+    public function likes(){
+        return $this->hasMany('App\Like');
+    }
 }

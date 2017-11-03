@@ -45,4 +45,8 @@ class User extends Eloquent implements Authenticatable
     public function participations(){
         return $this->hasOne('\App\Participation');
     }
+
+    public function likes(){
+        return $this->hasMany('App\Like');
+    }
 }
