@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Like;
 use App\Participation;
 use App\Photo;
 use Illuminate\Http\Request;
@@ -62,13 +63,47 @@ class ParticipationsController extends Controller
 
 
         }
-        $user->participations()->create($input);
+        $user->participation()->create($input);
         return redirect('/participations');
 
 
 
 
     }
+
+
+    public function isLikedByMe($id)
+    {
+        $participation = Participation::findOrFail($id)->first();
+        if (Like::whereUserId(Auth::id())->whereParticipationId($participation->id)->exists()){
+            return 'true';
+        }
+        return 'false';
+    }
+
+    public function like(Participation $participation)
+    {
+        var_dump($participation->id);
+       // $existing_like = Like::withTrashed()->whereParticipationId($participation->id)->whereUserId(Auth::id())->first();
+
+     //   var_dump($existing_like); //null
+       // if (is_null($existing_like)) {
+         //   var_dump($participation->id); //null
+           // var_dump(Auth::id()); //1
+            /*Like::create([
+                'participation_id' => $participation->id,
+                'user_id' => Auth::id()
+            ]);
+        } else {*/
+            /*if (is_null($existing_like->deleted_at)) {
+                $existing_like->delete();
+            } else {
+                $existing_like->restore();
+            }*/
+       // }
+    }
+
+
 
     /**
      * Display the specified resource.

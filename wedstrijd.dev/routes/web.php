@@ -36,3 +36,7 @@ Route::resource('participations', 'ParticipationsController',['names'=>[
     'store'=>'participations.store',
     'edit'=>'participations.edit'
 ]]);
+
+
+Route::get('participation/{id}/islikedbyme', 'ParticipationsController@isLikedByMe');
+Route::post('participation/like', 'ParticipationsController@like');
