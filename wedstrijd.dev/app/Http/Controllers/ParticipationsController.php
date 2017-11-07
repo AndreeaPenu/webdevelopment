@@ -7,6 +7,7 @@ use App\Participation;
 use App\Photo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 
 class ParticipationsController extends Controller
 {
@@ -72,35 +73,40 @@ class ParticipationsController extends Controller
     }
 
 
-    public function isLikedByMe($id)
+ /*   public function isLikedByMe($id)
     {
         $participation = Participation::findOrFail($id)->first();
         if (Like::whereUserId(Auth::id())->whereParticipationId($participation->id)->exists()){
             return 'true';
         }
         return 'false';
-    }
+    }*/
 
     public function like(Participation $participation)
     {
-        var_dump($participation->id);
-       // $existing_like = Like::withTrashed()->whereParticipationId($participation->id)->whereUserId(Auth::id())->first();
+        $part = Input::get('id');
+        $int = (int)$part;
 
-     //   var_dump($existing_like); //null
-       // if (is_null($existing_like)) {
-         //   var_dump($participation->id); //null
-           // var_dump(Auth::id()); //1
-            /*Like::create([
-                'participation_id' => $participation->id,
-                'user_id' => Auth::id()
-            ]);
-        } else {*/
-            /*if (is_null($existing_like->deleted_at)) {
+        $existing_like = Like::withTrashed()->whereParticipationId($int)->whereUserId(Auth::id())->first();
+        var_dump($existing_like); //null
+
+        if (is_null($existing_like)) {
+            var_dump($int); //null
+            var_dump(Auth::id()); //1
+
+            $data = [
+                'user_id' => Auth::id(),
+                'participation_id' => $int
+            ];
+
+            Like::create($data);
+        } /*else {
+            if (is_null($existing_like->deleted_at)) {
                 $existing_like->delete();
             } else {
                 $existing_like->restore();
-            }*/
-       // }
+            }
+        }*/
     }
 
 

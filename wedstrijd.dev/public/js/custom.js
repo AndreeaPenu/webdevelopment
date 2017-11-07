@@ -5,6 +5,7 @@
 
 $(document).ready(function(){
     $(document).delegate(".like","click",function(e) {
+        var d = '';
         e.preventDefault();
         $.ajax({
             headers: {
@@ -16,20 +17,12 @@ $(document).ready(function(){
             data: {'id': this.id},
             success: function(data){
                 console.log('good: '+ data);
+                d = data;
             }
         });
 
+        return d;
 
-
-        $.ajax("/participation/like?id=1", {
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            type: 'POST',
-            dataType: 'json'
-
-        })
-            .done("iets doen als het lukt");
     });
 
 /*    function checkLike($participationId){

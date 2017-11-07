@@ -13,7 +13,7 @@ class Participation extends Model
     protected $dates = ['deleted_at'];
 
     protected $fillable = [
-        'user_id','photo_id'
+        'id','user_id','photo_id'
     ];
 
 

@@ -22,21 +22,14 @@
             <tr>
                 @foreach($participations as $participation)
 
-
-
-
                     {!! Form::open(array('method'=>'post','class'=>$participation->id,
      'action'=>'ParticipationsController@like')) !!}
-                    {!! Form::hidden('participationId', $participation->id) !!}
 
                     <td>{{$participation->id}}</td>
                     <td>{{$participation->user->name}}</td>
                     <td><img height="100" src="{{$participation->photo->file}}" alt=""></td>
                     <td>{{$participation->created_at}}</td>
-
                     {!! Form::submit('Like',array('class'=>'btn btn-primary like','id'=>$participation->id)) !!}
-                    {{--{!!$images->likes!!}--}}
-
                     {!! Form::close() !!}
 
 
