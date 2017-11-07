@@ -1,13 +1,8 @@
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-</head>
+@extends('layouts.app')
 
-<body>
+@section('content')
 <div class="container">
-    <h1>Participations</h1>
+    <h1>Participations <a class="btn btn-default" href={{url('/participations/create')}}>Voeg een foto toe</a></h1>
 
     <table class="table">
         <thead>
@@ -16,6 +11,7 @@
             <th>Eigenaar</th>
             <th>Foto</th>
             <th>Datum inzending</th>
+            <th></th>
         </thead>
         <tbody>
         @if($participations)
@@ -29,7 +25,10 @@
                     <td>{{$participation->user->name}}</td>
                     <td><img height="100" src="{{$participation->photo->file}}" alt=""></td>
                     <td>{{$participation->created_at}}</td>
-                    {!! Form::submit('Like',array('class'=>'btn btn-primary like','id'=>$participation->id)) !!}
+
+                @if(Auth::user()->has_voted==0 && (Auth::user()->id != $participation->user->id))
+                   <td> {!! Form::submit('Like',array('class'=>'btn btn-primary like','id'=>$participation->id)) !!}</td>
+                    @endif
                     {!! Form::close() !!}
 
 
@@ -40,10 +39,7 @@
     </table>
 </div>
 
-</body>
-
-
-</html>
+@endsection
 
 
 

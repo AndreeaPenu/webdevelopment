@@ -12,10 +12,8 @@ use Illuminate\Auth\Authenticatable as AuthenticableTrait;
 
 class User extends Eloquent implements Authenticatable
 {
-    use Notifiable;
-
     use AuthenticableTrait;
-
+    use Notifiable;
     use SoftDeletes;
 
     /**
@@ -29,7 +27,7 @@ class User extends Eloquent implements Authenticatable
 
 
     protected $fillable = [
-        'name', 'email', 'password', 'facebook_id', 'ip_address', 'address', 'town',
+        'name', 'email', 'password', 'facebook_id', 'ip_address', 'address', 'town', 'has_voted'
     ];
 
     /**

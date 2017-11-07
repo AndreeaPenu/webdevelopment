@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Like;
 use App\Participation;
 use App\Photo;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
@@ -21,6 +22,7 @@ class ParticipationsController extends Controller
         //
 
         $participations = Participation::all();
+
 
         return view('participations.index', compact('participations'));
     }
@@ -88,11 +90,11 @@ class ParticipationsController extends Controller
         $int = (int)$part;
 
         $existing_like = Like::withTrashed()->whereParticipationId($int)->whereUserId(Auth::id())->first();
-        var_dump($existing_like); //null
+        //var_dump($existing_like); //null
 
         if (is_null($existing_like)) {
-            var_dump($int); //null //1
-            var_dump(Auth::id()); //1
+            //var_dump($int); //null //1
+           // var_dump(Auth::id()); //1
 
             $data = [
                 'user_id' => Auth::id(),
@@ -100,7 +102,15 @@ class ParticipationsController extends Controller
             ];
 
             Like::create($data);
-        } /*else {
+            $user = User::findOrFail(Auth::id());
+            var_dump(Auth::id());
+            var_dump($user);
+            $user->has_voted = 1;
+            $user->save();
+            return back();
+
+        }
+        /*else {
             if (is_null($existing_like->deleted_at)) {
                 $existing_like->delete();
             } else {

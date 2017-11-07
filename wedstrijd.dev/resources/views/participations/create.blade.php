@@ -1,3 +1,10 @@
+@extends('layouts.app')
+
+@section('content')
+
+
+<div class="container">
+
 <h1>Deelname</h1>
 
 
@@ -8,7 +15,7 @@
 
         <div class="form-group">
             {!! Form::label('photo_id', 'Foto:') !!}
-            {!! Form::file('photo_id', null,['class'=>'form-control'])!!}
+            {!! Form::file('photo_id', null,['class'=>'form-control btn btn-default'])!!}
         </div>
 
 
@@ -20,7 +27,7 @@
 
     </div>
 
-
-
+</div>
+@endsection
 
 
