@@ -14,6 +14,10 @@
                         </div>
                     @endif
 
+                    <h2>Voorlopige winnaar van deze wedstrijd</h2>
+                    @foreach($winners as $winner)
+                        <p>{{$winner->user->name}}</p>
+                    @endforeach
                       <class class="row">Je kunt nu deelnemen aan de wedstrijd!
                           <a href={{url('/participations/create')}}>Voeg een foto toe</a>
                       </class>

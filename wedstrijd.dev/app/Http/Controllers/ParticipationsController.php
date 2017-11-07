@@ -30,8 +30,12 @@ class ParticipationsController extends Controller
 
         $contest = Contest::first();
 
+        //$winner = $this->getWinner();
+
         return view('participations.index', compact('participations','partLikeCount','contest'));
     }
+
+
 
     /**
      * Show the form for creating a new resource.
