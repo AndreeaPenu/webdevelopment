@@ -91,7 +91,7 @@ class ParticipationsController extends Controller
         var_dump($existing_like); //null
 
         if (is_null($existing_like)) {
-            var_dump($int); //null
+            var_dump($int); //null //1
             var_dump(Auth::id()); //1
 
             $data = [
