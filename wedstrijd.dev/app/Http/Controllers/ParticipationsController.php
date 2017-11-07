@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contest;
 use App\Like;
 use App\Participation;
 use App\Photo;
@@ -23,12 +24,13 @@ class ParticipationsController extends Controller
 
         $participations = Participation::all();
         $partLikeCount = Participation::first();
-        $partLikeCount->like_count;
+        if($partLikeCount) {
+            $partLikeCount->like_count;
+        }
 
+        $contest = Contest::first();
 
-
-
-        return view('participations.index', compact('participations','partLikeCount'));
+        return view('participations.index', compact('participations','partLikeCount','contest'));
     }
 
     /**

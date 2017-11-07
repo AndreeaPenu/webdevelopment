@@ -24,8 +24,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $partLikeCount = Participation::first();
-        $partLikeCount->like_count;
-        return view('home',compact('partLikeCount'));
+        return view('home');
     }
 }
