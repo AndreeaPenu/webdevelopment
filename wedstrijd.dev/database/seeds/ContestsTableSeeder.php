@@ -17,8 +17,8 @@ class ContestsTableSeeder extends Seeder
         DB::table('contests')->insert(array(
 
             array(
-                'start'=>Carbon::now(),
-                'end'=>Carbon::now()->addDays(7)),
+                'start'=>Carbon::yesterday(),
+                'end'=>Carbon::now()),
             array(
                 'start'=>Carbon::now()->addDays(14),
                 'end'=>Carbon::now()->addDays(21)),
@@ -28,6 +28,11 @@ class ContestsTableSeeder extends Seeder
             array(
                 'start'=>Carbon::now()->addDays(42),
                 'end'=>Carbon::now()->addDays(49))
+
+
+     /*       array(
+                'start'=>Carbon::yesterday(),
+                'end'=>Carbon::now())*/
         ));
     }
 }

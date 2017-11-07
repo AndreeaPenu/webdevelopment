@@ -14,10 +14,42 @@
                         </div>
                     @endif
 
-                    <h2>Voorlopige winnaar van deze wedstrijd</h2>
+                    <h1>Winnaars</h1>
+
                     @foreach($winners as $winner)
+                        @if($current_date >= $contest->end)
+                                <h2>Winnaar periode 1</h2>
                         <p>{{$winner->user->name}}</p>
+                                <img height="100" src="{{$winner->photo->file}}" alt="">
+                            @endif
                     @endforeach
+
+
+                        @foreach($winners2 as $winner)
+                            @if($current_date >= $contest2->end)
+                                <h2>Winnaar periode 2</h2>
+                                <p>{{$winner->user->name}}</p>
+                                <img height="100" src="{{$winner->photo->file}}" alt="">
+                            @endif
+                        @endforeach
+
+                        @foreach($winners3 as $winner)
+                            @if($current_date >= $contest3->end)
+                                <h2>Winnaar periode 3</h2>
+                                <p>{{$winner->user->name}}</p>
+                                <img height="100" src="{{$winner->photo->file}}" alt="">
+                            @endif
+                        @endforeach
+
+                        @foreach($winners4 as $winner)
+                            @if($current_date >= $contest4->end)
+                                <h2>Winnaar periode 4</h2>
+                                <p>{{$winner->user->name}}</p>
+                                <img height="100" src="{{$winner->photo->file}}" alt="">
+                            @endif
+                        @endforeach
+
+
                       <class class="row">Je kunt nu deelnemen aan de wedstrijd!
                           <a href={{url('/participations/create')}}>Voeg een foto toe</a>
                       </class>
