@@ -29,4 +29,10 @@ class Participation extends Model
     public function likes(){
         return $this->belongsToMany('App\User','likes');
     }
+
+
+    # Use this to count the likes
+    public function getLikeCountAttribute(){
+        return $this->likes->count();
+    }
 }

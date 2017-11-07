@@ -22,9 +22,13 @@ class ParticipationsController extends Controller
         //
 
         $participations = Participation::all();
+        $partLikeCount = Participation::first();
+        $partLikeCount->like_count;
 
 
-        return view('participations.index', compact('participations'));
+
+
+        return view('participations.index', compact('participations','partLikeCount'));
     }
 
     /**

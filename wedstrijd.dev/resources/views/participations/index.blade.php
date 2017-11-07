@@ -11,6 +11,7 @@
             <th>Eigenaar</th>
             <th>Foto</th>
             <th>Datum inzending</th>
+            <th>Aantal likes</th>
             <th></th>
         </thead>
         <tbody>
@@ -25,7 +26,7 @@
                     <td>{{$participation->user->name}}</td>
                     <td><img height="100" src="{{$participation->photo->file}}" alt=""></td>
                     <td>{{$participation->created_at}}</td>
-
+                    <td>{{$participation->likes->count()}}</td>
                 @if(Auth::user()->has_voted==0 && (Auth::user()->id != $participation->user->id))
                    <td> {!! Form::submit('Like',array('class'=>'btn btn-primary like','id'=>$participation->id)) !!}</td>
                     @endif
