@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Contest;
+use App\Mail\WinnerChosen;
 use App\Participation;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
@@ -44,4 +46,10 @@ class HomeController extends Controller
         return view('home',compact('winners','winners2','winners3','winners4','contest','contest2','contest3','contest4','current_date'));
     }
 
+
+    public function sendMail(){
+        $mail = 'marzone.ap@gmail.com';
+        Mail::to($mail)->send(new WinnerChosen);
+        dd('Mail send successfully');
+    }
 }

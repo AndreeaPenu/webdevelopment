@@ -40,3 +40,6 @@ Route::resource('participations', 'ParticipationsController',['names'=>[
 
 Route::get('participation/{id}/islikedbyme', 'ParticipationsController@isLikedByMe');
 Route::post('participation/like', 'ParticipationsController@like');
+
+
+Route::get('sendmail','HomeController@sendMail');
