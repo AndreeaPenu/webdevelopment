@@ -48,7 +48,7 @@ class UserController extends Controller
             'address' => $request->input('address'),
             'town' => $request->input('town'),
         ]);
-        return redirect("/home");
+        return redirect("/participations");
     }
 
     /**
@@ -71,7 +71,7 @@ class UserController extends Controller
     public function edit($id)
     {
         //
-        $user = User::find($id);
+        $user = User::findOrFail($id);
         return view('users.edit',compact('user'));
     }
 
@@ -88,8 +88,10 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->address = $request->input('address');
         $user->town = $request->input('town');
+        $user->save();
         $user->update();
-        return redirect('/home');
+
+        return redirect('/participations');
     }
 
     /**

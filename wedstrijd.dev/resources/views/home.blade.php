@@ -16,6 +16,7 @@
 
                     <h1>Winnaars</h1>
 
+
                     @foreach($winners as $winner)
                         @if($current_date >= $contest->end)
                                 <h2>Winnaar periode 1</h2>
@@ -33,6 +34,7 @@
                             @endif
                         @endforeach
 
+
                         @foreach($winners3 as $winner)
                             @if($current_date >= $contest3->end)
                                 <h2>Winnaar periode 3</h2>
@@ -41,6 +43,8 @@
                             @endif
                         @endforeach
 
+
+
                         @foreach($winners4 as $winner)
                             @if($current_date >= $contest4->end)
                                 <h2>Winnaar periode 4</h2>
@@ -48,6 +52,7 @@
                                 <img height="100" src="{{$winner->photo->file}}" alt="">
                             @endif
                         @endforeach
+
 
 
                       <class class="row">Je kunt nu deelnemen aan de wedstrijd!

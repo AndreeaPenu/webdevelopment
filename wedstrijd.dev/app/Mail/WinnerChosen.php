@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Participation;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -28,6 +29,7 @@ class WinnerChosen extends Mailable
      */
     public function build()
     {
-        return $this->view('mail.winnerchosen');
+        return $this->from('info@wedstrijd.com')->subject('We have a winner!')
+        ->view('mail.winnerchosen');
     }
 }

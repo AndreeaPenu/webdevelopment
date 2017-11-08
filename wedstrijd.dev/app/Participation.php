@@ -39,19 +39,4 @@ class Participation extends Model
         return $this->likes->count();
     }
 
-    public function getWinner(){
-        $winner = $this->getLikeCountAttribute();
-        $winner_id = $winner->user->id;
-
-        $created_at = $this->created_at->where($this->user_id == $winner_id);
-
-        $begin = $this->contest->begin;
-        $end = $this->contest->end;
-
-        if($begin < $created_at && $end > $created_at){
-            return $winner_id;
-        }
-
-
-    }
 }

@@ -79,7 +79,6 @@ class RegisterController extends Controller
 
     }
 
-
     /**
      * Redirect the user to the GitHub authentication page.
      *

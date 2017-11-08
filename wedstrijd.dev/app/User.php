@@ -10,6 +10,9 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Auth\Authenticatable as AuthenticableTrait;
 
+/**
+ * @property  role
+ */
 class User extends Eloquent implements Authenticatable
 {
     use AuthenticableTrait;
@@ -27,7 +30,7 @@ class User extends Eloquent implements Authenticatable
 
 
     protected $fillable = [
-        'name', 'email', 'password', 'facebook_id', 'ip_address', 'address', 'town', 'has_voted'
+        'name', 'email', 'password', 'facebook_id', 'ip_address', 'address', 'town', 'has_voted', 'deleted_at'
     ];
 
     /**
@@ -46,5 +49,16 @@ class User extends Eloquent implements Authenticatable
 
     public function likes(){
         return $this->belongsToMany('App\Participation', 'likes', 'user_id','participation_id');
+    }
+
+    public function role(){
+        return $this->belongsTo('App\Role');
+    }
+
+    public function isAdmin(){
+        if($this->role->name == "admin"){
+            return true;
+        }
+        return false;
     }
 }

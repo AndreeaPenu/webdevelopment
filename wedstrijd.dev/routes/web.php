@@ -29,6 +29,7 @@ Route::resource('/users', 'UserController',['names'=>[
 
 Route::post('/users', 'UserController@store');
 Route::get('/users/{id}/edit','UserController@edit')->name('users.edit');
+Route::patch('/users/{id}', 'UserController@update')->name('users.update');
 
 Route::resource('participations', 'ParticipationsController',['names'=>[
     'index'=>'participations.index',
@@ -43,3 +44,4 @@ Route::post('participation/like', 'ParticipationsController@like');
 
 
 Route::get('sendmail','HomeController@sendMail');
+
