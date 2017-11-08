@@ -9,10 +9,15 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Mario Bros</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{asset('css/custom.css')}}" rel="stylesheet">
+    <link href="{{asset('css/sticky-footer-navbar.css')}}" rel="stylesheet">
+    <link href="{{asset('css/signin.css')}}" rel="stylesheet">
+    <link href="{{asset('css/album.css')}}" rel="stylesheet">
+
 </head>
 <body>
     <div id="app">
@@ -30,7 +35,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        <img class="logo" src="{{asset('/images/nintendo-logo2.png')}}" alt="nintendo">
                     </a>
                 </div>
 
@@ -43,9 +48,16 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
+
+                        @if(Auth::user()->role_id=1)
+                            <li><a href="{{ url('/users') }}">Users</a></li>
+                        @endif
+
                         @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                        {{--    <li><a href="{{ route('login') }}">Aanmelden</a></li>
+                            <li><a href="{{ route('register') }}">Registreren</a></li>--}}
+                            <li><a href="{{ url('/home' )}}"></a>Dashboard</li>
+                            <li><a href="{{ url('/auth/facebook' )}}"></a>Aanmelden met Facebook</li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -73,6 +85,12 @@
         </nav>
 
         @yield('content')
+        <footer class="footer">
+            <div class="container">
+                <span class="text-muted">© Nintendo</span>
+            </div>
+        </footer>
+
     </div>
 
     <!-- Scripts -->

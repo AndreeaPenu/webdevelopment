@@ -1,6 +1,11 @@
+@extends('layouts.app')
+
+@section('content')
+    <div class="container">
 <h1>Users</h1>
 
-<table>
+        <div class="table-responsive">
+            <table class="table table-striped">
     <thead>
         <tr>
             <th>Id</th>
@@ -8,6 +13,7 @@
             <th>Email</th>
             <th></th>
         </tr>
+    </thead>
     <tbody>
 
     @if($users)
@@ -22,7 +28,7 @@
         <form action="{{ route('users.destroy', $user->id) }}" method="POST">
             <input type="hidden" name="_method" value="DELETE" />
             <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>" />
-            <button>Delete</button>
+            <button class="btn btn-primary">Verwijder</button>
         </form>
 
         </td>
@@ -31,5 +37,8 @@
         @endif
     </tbody>
 
-    </thead>
+
 </table>
+    </div>
+    </div>
+@endsection

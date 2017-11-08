@@ -4,35 +4,36 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Extra informatie</div>
 
-                    <div class="panel-body">
+
+
+
 
 
 
                             {{ csrf_field() }}
-                            {!! Form::model($user, ['method'=>'PATCH', 'action'=> ['UserController@update', $user->id]]) !!}
+                            {!! Form::model($user, ['method'=>'PATCH', 'action'=> ['UserController@update', $user->id], 'class'=>'form-signin']) !!}
 
+                            <h2 class="form-signin-heading">Extra informatie</h2>
 
-                            <div class="form-group">
-                                {!! Form::label('address', 'Adres:') !!}
-                                {!! Form::text('address', null, ['class'=>'form-control'])!!}
+                        <div class="form-group">
+                                {!! Form::label('address', 'Adres:',['class'=>'sr-only']) !!}
+                                {!! Form::text('address', null, ['class'=>'form-control', 'placeholder'=>'Adres'])!!}
                             </div>
 
                             <div class="form-group">
-                                {!! Form::label('town', 'Woonplaats:') !!}
-                                {!! Form::text('town', null, ['class'=>'form-control'])!!}
+                                {!! Form::label('town', 'Woonplaats:',['class'=>'sr-only']) !!}
+                                {!! Form::text('town', null, ['class'=>'form-control', 'placeholder'=>'Woonplaats'])!!}
                             </div>
 
                             <div class="form-group">
-                                {!! Form::submit('Volgende', ['class'=>'btn btn-primary col-sm-6']) !!}
+                                {!! Form::submit('Volgende', ['class'=>'btn btn-primary btn-block col-sm-6']) !!}
                             </div>
                             {!! Form::close() !!}
 
 
-                    </div>
-                </div>
+
+
             </div>
         </div>
     </div>

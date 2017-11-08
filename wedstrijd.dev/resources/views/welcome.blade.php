@@ -1,98 +1,76 @@
 <!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
 
-        <title>Laravel</title>
+    <title>Mario Bros</title>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+    <!-- Bootstrap core CSS -->
+    <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
+    <!-- Custom styles for this template -->
+    <link href="{{asset('css/cover.css')}}" rel="stylesheet">
+</head>
 
-            .full-height {
-                height: 100vh;
-            }
+<body>
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+<div class="site-wrapper">
 
-            .position-ref {
-                position: relative;
-            }
+    <div class="site-wrapper-inner">
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
+        <div class="cover-container">
 
-            .content {
-                text-align: center;
-            }
+            <header class="masthead clearfix">
+                <div class="inner">
+                    <h3 class="masthead-brand"><img class="logo" src="{{asset('/images/nintendo-logo.png')}}" alt="nintendo"></h3>
 
-            .title {
-                font-size: 84px;
-            }
 
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                        <a href="{{ url('/participations' )}}">Deelnames</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                        <a href="{{ url('/auth/facebook' )}}">Login with Facebook</a>
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    @if (Route::has('login'))
+                        <nav class="nav nav-masthead">
+                            @auth
+                            <a class="nav-link" href="{{ url('/home') }}">Dashboard</a>
+                            <a class="nav-link" href="{{ url('/participations' )}}">Deelnames</a>
+                            @else
+                             {{--   <a class="nav-link" href="{{ route('login') }}">Aanmelden</a>
+                                <a class="nav-link" href="{{ route('register') }}">Registreren</a>
+                                <a class="nav-link" href="{{ url('/auth/facebook' )}}">Login met Facebook</a>--}}
+                                @endauth
+                        </nav>
+                    @endif
 
                 </div>
-            </div>
+            </header>
+
+            <main role="main" class="inner cover">
+                <h1 class="cover-heading">Win de nieuwe super Mario Bros!</h1>
+                <p class="lead">Je hoeft enkel een tekening te maken en op onze site posten. De creatie met de meeste likes wint!</p>
+                <p class="lead">
+                    <a href="{{ url('/auth/facebook' )}}" class="btn btn-lg btn-secondary">Deelnemen</a>
+                </p>
+            </main>
+
+            <footer class="mastfoot">
+                <div class="inner">
+                    <p>© Nintendo.</p>
+                </div>
+            </footer>
+
         </div>
-    </body>
+
+    </div>
+
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="../../../../assets/js/vendor/popper.min.js"></script>
+<script src="{{asset('js/bootstrap.min.js')}}"></script>
+</body>
 </html>

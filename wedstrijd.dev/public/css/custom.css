@@ -1,0 +1,73 @@
+.logo{
+    width:130px;
+}
+
+.navbar-brand{
+    padding-top:4px;
+}
+
+.navbar-default{
+    background-color:#E60012;
+    border:none;
+}
+
+/*nav text*/
+.navbar-default .navbar-nav>li>a, .navbar-default .navbar-text{
+    color:#ffffff;
+}
+
+.navbar-default .navbar-nav>li>a, .navbar-default .navbar-text{
+    color:#ffffff;
+}
+
+/*geklikte nav text*/
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover{
+    background-color:#E60012;
+    color:#ffffff;
+}
+
+.dropdown-menu>li>a:focus,.dropdown-menu>li>a:hover{
+    background-color:#E60012;
+    color:#333;
+}
+
+.dropdown-menu{
+    background-color:#E60012;
+}
+
+/* logout button */
+.dropdown-menu>li>a{
+    background-color:#E60012;
+    color:#ffffff;
+}
+
+.footer{
+    background-color:#E60012!important;
+    color:#ffffff!important;
+}
+
+.btn-primary{
+    background-color:#E60012!important;
+    border-color:#E60012!important;
+}
+
+.h2, h2 {
+    font-weight:800;
+}
+
+.red{
+    color:#E60012!important;
+}
+.mario{
+    width:20%;
+    float:right;
+}
+
+.card img{
+    height:280px;
+    width:100%;
+}
+
+.black{
+    color:#333;
+}
