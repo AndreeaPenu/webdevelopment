@@ -61,4 +61,10 @@ class User extends Eloquent implements Authenticatable
         }
         return false;
     }
+
+
+    public function getId()
+    {
+        return $this->id;
+    }
 }

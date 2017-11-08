@@ -19,7 +19,7 @@
             <tr>
                 @foreach($participations as $participation)
 
-                    @if($contest->begin < $participation->created_at && $contest->end > $participation->created_at)
+                    @if($contest->begin <= $participation->created_at && $contest->end >= $participation->created_at)
                         {!! Form::open(array('method'=>'post','class'=>$participation->id,
          'action'=>'ParticipationsController@like')) !!}
 

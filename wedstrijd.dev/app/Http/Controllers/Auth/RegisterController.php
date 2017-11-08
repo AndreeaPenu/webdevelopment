@@ -30,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+   // protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -118,8 +118,9 @@ class RegisterController extends Controller
             ]);
         auth()->login($user);
 
+        $id = Auth::user()->getId();
 
-        return redirect()->to('/users/'.Auth::user()->id.'/edit');
+        return redirect()->to('/users/'.$id.'/edit');
 
         // $user->token;
     }

@@ -96,7 +96,7 @@ class UserController extends Controller
         $user->save();
         $user->update();
 
-        return redirect('/participations');
+        return redirect('/home');
     }
 
     /**
