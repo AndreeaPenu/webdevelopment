@@ -13,6 +13,11 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('admin')->except('store','edit','update');
+    }
+
     public function index()
     {
         //
